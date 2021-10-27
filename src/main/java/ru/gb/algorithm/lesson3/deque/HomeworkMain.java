@@ -1,6 +1,9 @@
 package ru.gb.algorithm.lesson3.deque;
 
 
+import ru.gb.algorithm.lesson3.queue.Queue;
+import ru.gb.algorithm.lesson4.LinkedQueue;
+
 public class HomeworkMain {
     public static void main(String[] args) {
 
