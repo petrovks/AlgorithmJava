@@ -34,4 +34,14 @@ public class SortNotebooksSelection extends SelectionSort {
                 .thenComparing(Notebook::getProducer);
         notebooks.sort(c);
     }
+
+    public static void sortByMemory(List<Notebook> notebooks) {
+        Comparator<Notebook> c = Comparator.comparing(Notebook::getMemory);
+        notebooks.sort(c);
+    }
+
+    public static void sortByPrice(List<Notebook> notebooks) {
+        Comparator<Notebook> c = Comparator.comparing(Notebook::getPrice);
+        notebooks.sort(c);
+    }
 }

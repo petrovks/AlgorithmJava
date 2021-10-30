@@ -13,21 +13,25 @@ public class Main {
         List<Notebook> notebooks = generateListNotebooks();
 
         long timeStart = System.currentTimeMillis();
-
-//        способ 1 - сортировка выбором
-        notebooks = SortNotebooksSelection.sort(notebooks);
-
-//        способ 2 - сортировка компаратором
-  //      SortNotebooksSelection.sortLight(notebooks);
-
-/*///        способ 3 - сортировка быстрая
-        SortNotebooksQuick.quickSort(notebooks);*/
-
+        System.out.println("Сортировка по цене началась");
+        SortNotebooksSelection.sortByPrice(notebooks);
         long timeEnd = System.currentTimeMillis();
-
-
         displayNotebooks(notebooks);
-        System.out.printf("Прошло времени: %dms", timeEnd - timeStart);
+        System.out.printf("Сортировка по цене закончилась. Прошло времени: %dms", timeEnd - timeStart);
+        SortNotebooksSelection.sortByMemory(notebooks);
+        int i = 10;
+        while (i != 0) {
+            System.out.println("****");
+            i--;
+        }
+
+        timeStart = System.currentTimeMillis();
+        System.out.println("Сортировка по памяти началась");
+        SortNotebooksSelection.sortByMemory(notebooks);
+        timeEnd = System.currentTimeMillis();
+        displayNotebooks(notebooks);
+        System.out.printf("Сортировка по памяти закончилась. Прошло времени: %dms", timeEnd - timeStart);
+
 
     }
 
@@ -49,8 +53,8 @@ public class Main {
 
     private static Notebook createNotebook() {
         Random random = new Random();
-        BigDecimal price = BigDecimal.valueOf(random.nextInt(26) * 100 + 500);
-        int memory = (random.nextInt(4) + 1) * 6;
+        BigDecimal price = BigDecimal.valueOf(random.nextInt(26) * 50 + 500);
+        int memory = (random.nextInt(6) + 1) * 4;
         int producersCount = Notebook.Producer.values().length;
         Notebook.Producer producer = Notebook.Producer.values()[random.nextInt(producersCount)];
         return new Notebook(price, memory, producer);
